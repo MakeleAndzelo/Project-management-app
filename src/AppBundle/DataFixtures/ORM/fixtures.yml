@@ -1,0 +1,8 @@
+AppBundle\Entity\Project:
+    project_{1..30}:
+        name: <domainName()>
+        description: <text(500)>
+        clientName: <company()>
+        createdAt: <dateTimeBetween("-50 days", "now")>
+        deadline: <dateTimeBetween("now", "+30 days")>
+        finishedAt: '20%? <dateTimeBetween("-20 days", "now")>'

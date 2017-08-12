@@ -4,36 +4,45 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         {% block styles %}{% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <!-- Top menu -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="top-navbar-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="btn btn-link-3" href="#">+ Project</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <header class="cd-auto-hide-header">
-            <div class="logo"><a href="#0">Project Manager</a></div>
+        <div class="container">
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
 
-            <nav class="cd-primary-nav">
-                <a href="#cd-navigation" class="nav-trigger">
-                <span>
-                    <em aria-hidden="true"></em>
-                    Menu
-                </span>
-                </a> <!-- .nav-trigger -->
-
-                <ul id="cd-navigation">
-                    <li class="add-project-button"><a href="#">+ Project</a></li>
-                </ul>
-            </nav> <!-- .cd-primary-nav -->
-        </header> <!-- .cd-auto-hide-header -->
-
-        <main class="cd-main-content">
-            {% block body %}{% endblock %}
-            {% block scripts %}{% endblock %}
-        </main> <!-- .cd-main-content -->
-
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/masonry-layout@4.2.0/dist/masonry.pkgd.min.js"></script>
+        {% block scripts %}{% endblock %}
     </body>
 </html>

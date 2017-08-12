@@ -33,3 +33,8 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    nelmio_alice.loader.native_loader:
+        class: Nelmio\Alice\Loader\NativeLoader
+        autowire: true
+        public: true
