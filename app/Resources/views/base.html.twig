@@ -3,11 +3,37 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         {% block styles %}{% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block scripts %}{% endblock %}
+
+        <header class="cd-auto-hide-header">
+            <div class="logo"><a href="#0">Project Manager</a></div>
+
+            <nav class="cd-primary-nav">
+                <a href="#cd-navigation" class="nav-trigger">
+                <span>
+                    <em aria-hidden="true"></em>
+                    Menu
+                </span>
+                </a> <!-- .nav-trigger -->
+
+                <ul id="cd-navigation">
+                    <li class="add-project-button"><a href="#">+ Project</a></li>
+                </ul>
+            </nav> <!-- .cd-primary-nav -->
+        </header> <!-- .cd-auto-hide-header -->
+
+        <main class="cd-main-content">
+            {% block body %}{% endblock %}
+            {% block scripts %}{% endblock %}
+        </main> <!-- .cd-main-content -->
+
     </body>
 </html>
