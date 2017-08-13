@@ -4,14 +4,28 @@
     <div class="projects">
         {% for project in projects %}
             <div class="col-md-4">
-                <div class="panel panel-default project">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{ project.name }}</h3>
+                <a href="#" class="project">
+                    <div class="project-heading">
+                        <span class="elipse"></span>
+                        <h3>{{ project.name }}</h3>
                     </div>
-                    <div class="panel-body">
-                        {{ project.description }}
+                    <div class="project-details">
+                        <div class="row">
+                            <small class="created-at col-md-6">
+                                <strong>Created at: </strong>{{ project.createdAt|date('d-m-Y') }}
+                            </small>
+
+                            <small class="deadline col-md-6">
+                                <strong>Deadline: </strong>{{ project.deadline|date('d-m-Y') }}
+                            </small>
+                        </div>
                     </div>
-                </div>
+                    <div class="project-description">
+                        <p>
+                            {{ project.description }}
+                        </p>
+                    </div>
+                </a>
             </div>
         {% endfor %}
     </div>

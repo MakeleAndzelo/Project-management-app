@@ -168,3 +168,52 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 }
+
+.project-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.project-details {
+  padding: 2rem 0;
+}
+
+.project-heading h3 {
+  margin: 0 0 0 10px;
+}
+
+.elipse {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: #df6482;
+  border-radius: 100%;
+}
+
+.project-description {
+  text-align: justify;
+}
+
+.project-buttons {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+strong {
+  font-weight: bold;
+}
+
+.project {
+  margin: 3rem 0;
+  color: #333;
+  cursor: pointer;
+}
+
+#deadline-datepicker {
+  position: relative;
+}

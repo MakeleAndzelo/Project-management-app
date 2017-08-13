@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,16 +21,19 @@ class Project
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $clientName;
 
@@ -150,5 +154,10 @@ class Project
     public function setFinishedAt($finishedAt)
     {
         $this->finishedAt = $finishedAt;
+    }
+
+    public function onPrePersist()
+    {
+        $this->createdAt = new \DateTime('now');
     }
 }
