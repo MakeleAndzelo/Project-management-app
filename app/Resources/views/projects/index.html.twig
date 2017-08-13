@@ -4,7 +4,7 @@
     <div class="projects">
         {% for project in projects %}
             <div class="col-md-4">
-                <a href="#" class="project">
+                <a href="{{ path('show_project', {'name': project.name }) }}" class="project">
                     <div class="project-heading">
                         <span class="elipse"></span>
                         <h3>{{ project.name }}</h3>

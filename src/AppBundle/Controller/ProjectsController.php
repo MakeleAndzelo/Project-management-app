@@ -49,4 +49,18 @@ class ProjectsController extends Controller
             'projectForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/project/{name}", name="show_project")
+     * @param Project $project
+     * @return Response
+     */
+    public function showAction(Project $project)
+    {
+
+        return $this->render('projects/show.html.twig', [
+            'project' => $project,
+        ]);
+    }
+
 }
