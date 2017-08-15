@@ -51,6 +51,49 @@ class ProjectsController extends Controller
     }
 
     /**
+     * @param Project $project, Request $request
+     * @return Response
+     * @Route("/project/{name}/edit", name="edit_project")
+     */
+    public function editAction(Project $project, Request $request)
+    {
+        $form = $this->createForm(
+            ProjectType::class,
+            $project
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $project = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            return $this->redirect('/');
+        }
+
+        return $this->render('projects/edit.html.twig',[
+            'projectForm' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @param Project $project
+     * @Route("/project/{name}/delete", name="delete_project")
+     */
+    public function deleteAction(Project $project)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->redirect('/');
+    }
+
+    /**
      * @Route("/project/{name}", name="show_project")
      * @param Project $project
      * @return Response
