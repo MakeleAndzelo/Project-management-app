@@ -1,0 +1,43 @@
+h3 {
+    text-align: center;
+}
+
+.project-managment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task {
+    border-bottom: 1px solid #99CDD8;
+    padding: 2rem 0;
+    list-style: none;
+}
+
+.comment {
+    text-align: left;
+    padding: 2rem 0;
+}
+
+.project-management {
+    position: fixed;
+    background: #df6482;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    bottom: 50px;
+    z-index: 2;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+.project-management a {
+    color: white;
+    margin: 0 7px;
+}

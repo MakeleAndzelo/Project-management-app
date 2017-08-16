@@ -79,10 +79,10 @@ class ProjectsController extends Controller
         ]);
     }
 
-
     /**
      * @param Project $project
      * @Route("/project/{name}/delete", name="delete_project")
+     * @return Response
      */
     public function deleteAction(Project $project)
     {
@@ -100,6 +100,10 @@ class ProjectsController extends Controller
      */
     public function showAction(Project $project)
     {
+
+        if (!$project) {
+            throw $this->createNotFoundException();
+        }
 
         return $this->render('projects/show.html.twig', [
             'project' => $project,

@@ -1,10 +1,79 @@
 {% extends 'base.html.twig' %}
 
-{% block scripts %}
-
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 {% endblock %}
 
 {% block body %}
+    <div class="col-md-6">
+        <div class="project-management">
+            <small>Manage project:</small>
+            <div class="btn-group">
+                <a href="#"><i class="fa fa-plus"></i></a>
+                <a href="{{ path('edit_project', {"name": "task"}) }}"><i class="fa fa-pencil"></i></a>
+                <a href="{{ path('delete_project', {"name": "task"}) }}"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
 
+        <section class="tasks">
+            <ul>
+                {% for task in project.tasks %}
+                    <li class="task" data-id="{{ task.id }}"><a href="#task-{{ task.id }}">{{ task.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+    <div class="col-md-6">
+        <section class="task-preview">
+
+            <h3>Task Description</h3>
+            <div class="task-description">
+                <p class="task-description-content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maxime natus necessitatibus nemo, praesentium quis?
+                </p>
+            </div>
+
+            <h3>Comments:</h3>
+            <div class="task-comments">
+
+                <p class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet beatae commodi consectetur corporis dicta facere harum, magni nisi, nulla quas rem repellat sequi, vero voluptate. Eum ipsa repellat saepe.
+                </p>
+                <hr>
+                <p class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet beatae commodi consectetur corporis dicta facere harum, magni nisi, nulla quas rem repellat sequi, vero voluptate. Eum ipsa repellat saepe.
+                </p>
+                <hr>
+                <p class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet beatae commodi consectetur corporis dicta facere harum, magni nisi, nulla quas rem repellat sequi, vero voluptate. Eum ipsa repellat saepe.
+
+                </p>
+                <hr>
+                <p class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet beatae commodi consectetur corporis dicta facere harum, magni nisi, nulla quas rem repellat sequi, vero voluptate. Eum ipsa repellat saepe.
+                </p>
+
+            </div>
+        </section>
+    </div>
 {% endblock %}
 
+{% block scripts %}
+    <script>
+        window.onload = function() {
+            let tasks = document.querySelectorAll('.task');
+
+            tasks.forEach((task) => {
+                task.addEventListener('click', (e) => {
+                    const endpoint = 'http://localhost:8000/tasks/get/' + task.dataset.id;
+                    const finishTask = [];
+
+                    fetch(endpoint).then(blob => blob.json()).then(data => {
+                        document.querySelector('.task-description-content').innerHTML = data.description;
+                    });
+                }, false);
+            })
+        }
+    </script>
+{% endblock %}

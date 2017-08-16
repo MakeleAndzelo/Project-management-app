@@ -6,3 +6,14 @@ AppBundle\Entity\Project:
         createdAt: <dateTimeBetween("-50 days", "now")>
         deadline: <dateTimeBetween("now", "+30 days")>
         finishedAt: '20%? <dateTimeBetween("-20 days", "now")>'
+
+AppBundle\Entity\Task:
+    task_{1..40}:
+        name: <domainName()>
+        description: <text(200)>
+        project: '@project_*'
+
+AppBundle\Entity\Comment:
+    comment_{1..150}:
+        body: <text(100)>
+        task: '@task_*'
