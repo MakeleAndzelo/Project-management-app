@@ -105,6 +105,7 @@ class ProjectsController extends Controller
             throw $this->createNotFoundException();
         }
 
+
         return $this->render('projects/show.html.twig', [
             'project' => $project,
         ]);

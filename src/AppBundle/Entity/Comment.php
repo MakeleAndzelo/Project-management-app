@@ -24,10 +24,9 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Task", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="task_id", referencedColumnName="id")
      */
     private $task;
-
 
 
     public function getId()

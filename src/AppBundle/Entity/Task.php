@@ -46,7 +46,7 @@ class Task
     }
 
     /**
-     * @return Comment $comments[]
+     * @return ArrayCollection
      */
     public function getComments()
     {

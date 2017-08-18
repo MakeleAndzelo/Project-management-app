@@ -64,9 +64,9 @@ class Project
     }
 
     /**
-     * @return Task $tasks[]
+     * @return ArrayCollection
      */
-    public function getTasks()
+    public function getTasks() : ArrayCollection
     {
         return $this->tasks;
     }

@@ -17,11 +17,19 @@ class TasksController extends Controller
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Task');
         $taskObject = $em->find($id);
+
+        $comments = [];
+        foreach($taskObject->getComments() as $comment) {
+            $comments[] = [
+                'body' => $comment->getBody(),
+            ];
+        }
+
         $task = [
             'id' => $taskObject->getId(),
             'name' => $taskObject->getName(),
             'description' => $taskObject->getDescription(),
-            'comments' => $taskObject->getComments()
+            'comments' => $comments,
         ];
 
         return JsonResponse::create($task);

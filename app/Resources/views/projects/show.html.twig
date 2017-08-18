@@ -67,10 +67,23 @@
             tasks.forEach((task) => {
                 task.addEventListener('click', (e) => {
                     const endpoint = 'http://localhost:8000/tasks/get/' + task.dataset.id;
-                    const finishTask = [];
 
                     fetch(endpoint).then(blob => blob.json()).then(data => {
                         document.querySelector('.task-description-content').innerHTML = data.description;
+
+                        let commentsWrapper = document.querySelector('.task-comments');
+                        commentsWrapper.innerHTML = '';
+
+                        data.comments.forEach(comment => {
+                            let commentHtml = `
+                                <p class="comment">
+                                    ${comment.body}
+                                </p>
+                                <hr/>
+                            `;
+
+                            commentsWrapper.innerHTML += commentHtml;
+                        })
                     });
                 }, false);
             })
