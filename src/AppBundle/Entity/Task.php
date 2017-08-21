@@ -101,7 +101,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getProject()
+    public function getProject() : Project
     {
         return $this->project;
     }
@@ -109,7 +109,7 @@ class Task
     /**
      * @param mixed $project
      */
-    public function setProject($project)
+    public function setProject(Project $project)
     {
         $this->project = $project;
     }

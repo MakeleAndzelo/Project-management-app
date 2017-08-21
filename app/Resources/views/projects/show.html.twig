@@ -9,9 +9,9 @@
         <div class="project-management">
             <small>Manage project:</small>
             <div class="btn-group">
-                <a href="#"><i class="fa fa-plus"></i></a>
-                <a href="{{ path('edit_project', {"name": "task"}) }}"><i class="fa fa-pencil"></i></a>
-                <a href="{{ path('delete_project', {"name": "task"}) }}"><i class="fa fa-trash"></i></a>
+                <a href="{{ path('new_task', {"name": project.name} ) }}"><i class="fa fa-plus"></i></a>
+                <a href="{{ path('edit_project', {"name": project.name}) }}"><i class="fa fa-pencil"></i></a>
+                <a href="{{ path('delete_project', {"name": project.name}) }}"><i class="fa fa-trash"></i></a>
             </div>
         </div>
 
