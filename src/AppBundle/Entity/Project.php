@@ -66,7 +66,7 @@ class Project
     /**
      * @return ArrayCollection
      */
-    public function getTasks() : ArrayCollection
+    public function getTasks()
     {
         return $this->tasks;
     }

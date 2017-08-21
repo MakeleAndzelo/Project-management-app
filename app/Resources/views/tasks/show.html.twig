@@ -1,0 +1,27 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+    <div class="col-md-12">
+        <div class="row">
+            <header>
+                <h2>{{ task.name }}</h2>
+            </header>
+            <p>{{ task.description }}</p>
+        </div>
+        <div class="row">
+            <h3>Comments:</h3>
+            {% for comment in task.comments %}
+                <p>{{ comment.body }}</p>
+                <hr>
+            {% endfor %}
+            {{ form_start(
+                commentForm,
+                {"action": path('new_comment', { "name": task.name }) }
+            ) }}
+                {{ form_row(commentForm.body) }}
+
+                <button class="btn btn-primary">Add comment</button>
+            {{ form_end(commentForm) }}
+        </div>
+    </div>
+{% endblock %}

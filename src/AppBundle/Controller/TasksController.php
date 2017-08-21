@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Task;
+use AppBundle\Form\CommentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,29 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class TasksController extends Controller
 {
     /**
-     * @Route("/tasks/get/{id}", name="get_tasks")
+     * @Route("/tasks/{name}", name="show_task")
      * @Method("GET")
      */
-    public function getTask($id)
+    public function showTask(Task $task)
     {
-        $em = $this->getDoctrine()->getRepository('AppBundle:Task');
-        $taskObject = $em->find($id);
+        $commentForm = $this->createForm(CommentType::class);
 
-        $comments = [];
-        foreach($taskObject->getComments() as $comment) {
-            $comments[] = [
-                'body' => $comment->getBody(),
-            ];
-        }
-
-        $task = [
-            'id' => $taskObject->getId(),
-            'name' => $taskObject->getName(),
-            'description' => $taskObject->getDescription(),
-            'comments' => $comments,
-        ];
-
-        return JsonResponse::create($task);
+        return $this->render('tasks/show.html.twig', [
+            'task' => $task,
+            'commentForm' => $commentForm->createView(),
+        ]);
     }
-
 }
