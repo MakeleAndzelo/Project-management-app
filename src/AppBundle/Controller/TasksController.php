@@ -31,6 +31,8 @@ class TasksController extends Controller
             $em->persist($task);
             $em->flush();
 
+            $this->addFlash('success', 'Task successfully created');
+
             return $this->redirectToRoute('show_task', ['name' => $task->getName()]);
         }
 
