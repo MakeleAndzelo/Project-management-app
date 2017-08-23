@@ -12,6 +12,7 @@ AppBundle\Entity\Task:
         name: <domainName()>
         description: <text(200)>
         project: '@project_*'
+        isCompleted: <boolean(50)>
 
 AppBundle\Entity\Comment:
     comment_{1..150}:

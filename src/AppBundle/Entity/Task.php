@@ -40,9 +40,30 @@ class Task
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isCompleted = false;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsCompleted()
+    {
+        return $this->isCompleted;
+    }
+
+    /**
+     * @param mixed $isCompleted
+     */
+    public function setIsCompleted($isCompleted)
+    {
+        $this->isCompleted = $isCompleted;
     }
 
     /**

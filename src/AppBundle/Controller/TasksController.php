@@ -13,6 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TasksController extends Controller
 {
+
+    /**
+     * @Route("/tasks/{name}/finish", name="finish_task")
+     */
+    public function finishTaskAction(Task $task)
+    {
+        $task->setIsCompleted(true);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($task);
+        $em->flush();
+
+        return $this->redirectToRoute('show_task', ['name' => $task->getName()]);
+    }
+
     /**
      * @Route("/projects/{name}/tasks/new", name="new_task")
      */

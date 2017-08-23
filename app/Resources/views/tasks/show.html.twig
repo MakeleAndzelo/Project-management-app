@@ -5,9 +5,18 @@
         <div class="row">
             <header>
                 <h2>{{ task.name }}</h2>
+                {% if task.isCompleted %}
+                    <small>completed</small>
+                {% endif %}
             </header>
             <p>{{ task.description }}</p>
         </div>
+        {% if task.isCompleted != true %}
+            <div class="row">
+                <a href="{{ path('finish_task', {"name":task.name}) }}" class="btn-sm btn-info">Complete</a>
+            </div>
+        {% endif %}
+
         <div class="row">
             <h3>Comments:</h3>
             {% for comment in task.comments %}

@@ -18,7 +18,12 @@
         <section class="tasks">
             <ul>
                 {% for task in project.tasks %}
-                    <li class="task"><a href="{{ path('show_task', {"name": task.name }) }}">{{ task.name }}</a></li>
+                    <li class="task">
+                        <a href="{{ path('show_task', {"name": task.name }) }}">{{ task.name }}</a>
+                        {% if task.isCompleted %}
+                            <small>completed</small>
+                        {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         </section>
