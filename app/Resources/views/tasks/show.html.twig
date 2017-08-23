@@ -21,6 +21,7 @@
             <h3>Comments:</h3>
             {% for comment in task.comments %}
                 <p>{{ comment.body }}</p>
+                <small>{{ comment.user.username }}</small>
                 <hr>
             {% endfor %}
             {{ form_start(

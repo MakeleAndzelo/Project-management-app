@@ -1,3 +1,10 @@
+AppBundle\Entity\User:
+    user_{1..50}:
+        username: <username()>
+        email:  <email()>
+        enabled: true
+        plain_password: 'admin'
+
 AppBundle\Entity\Project:
     project_{1..30}:
         name: <domainName()>
@@ -18,3 +25,4 @@ AppBundle\Entity\Comment:
     comment_{1..150}:
         body: <text(100)>
         task: '@task_*'
+        user: '@user_*'
