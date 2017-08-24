@@ -24,14 +24,16 @@
                 <small>{{ comment.user.username }}</small>
                 <hr>
             {% endfor %}
-            {{ form_start(
-                commentForm,
-                {"action": path('new_comment', { "name": task.name }) }
-            ) }}
-                {{ form_row(commentForm.body) }}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ form_start(
+                    commentForm,
+                    {"action": path('new_comment', { "name": task.name }) }
+                ) }}
+                    {{ form_row(commentForm.body) }}
 
-                <button class="btn btn-primary">Add comment</button>
-            {{ form_end(commentForm) }}
+                    <button class="btn btn-primary">Add comment</button>
+                {{ form_end(commentForm) }}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -27,6 +27,7 @@ class CommentsController extends Controller
 
         $comment = $commentForm->getData();
         $comment->setTask($task);
+        $comment->setUser($this->getUser());
 
         $em->persist($comment);
         $em->flush($comment);
