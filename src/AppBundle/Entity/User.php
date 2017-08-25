@@ -24,6 +24,11 @@ class User extends BaseUser
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Project", mappedBy="users")
+     */
+    private $projects;
+
     public function __construct()
     {
         parent::__construct();

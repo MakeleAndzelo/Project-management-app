@@ -17,6 +17,7 @@ class ProjectType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('clientName')
+            ->add('users')
             ->add('deadline', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,

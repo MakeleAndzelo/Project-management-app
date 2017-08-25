@@ -5,20 +5,23 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Project;
 use AppBundle\Form\ProjectType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Security("has_role('ROLE_USER')")
+ */
 class ProjectsController extends Controller
 {
-
     /**
      * @Route("/", name="projects_list")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Project');
-        $projects = $em->findAll();
+        $projects = $em->findAllLoggedUserProjectsOrderByDeadline($this->getUser());
 
         return $this->render('projects/index.html.twig', [
             'projects' => $projects

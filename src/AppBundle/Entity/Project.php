@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
  * @ORM\Table(name="project")
  */
 class Project
@@ -57,6 +57,27 @@ class Project
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Task", mappedBy="project")
      */
     private $tasks;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="projects")
+     */
+    private $users;
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param mixed $users
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+    }
 
     public function __construct()
     {
