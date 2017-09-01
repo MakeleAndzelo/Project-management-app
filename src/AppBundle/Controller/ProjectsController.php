@@ -18,13 +18,20 @@ class ProjectsController extends Controller
     /**
      * @Route("/", name="projects_list")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Project');
-        $projects = $em->findAllLoggedUserProjectsOrderByDeadline($this->getUser());
+        $projectsQuery = $em->findAllLoggedUserProjectsOrderByDeadline($this->getUser());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $projectsQuery,
+            $request->query->get('page', 1),
+            4
+        );
 
         return $this->render('projects/index.html.twig', [
-            'projects' => $projects
+            'pagination' => $pagination
         ]);
     }
 

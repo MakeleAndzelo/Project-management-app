@@ -14,7 +14,6 @@ class ProjectRepository extends EntityRepository
             ->andWhere('users.id = :userId')
             ->setParameter('userId', $user->getId())
             ->orderBy('projects.deadline', 'DESC')
-            ->getQuery()
-            ->execute();
+            ->getQuery();
     }
 }

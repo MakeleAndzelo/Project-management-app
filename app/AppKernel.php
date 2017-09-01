@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             // My Bundles
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
             new AppBundle\AppBundle(),
         ];
