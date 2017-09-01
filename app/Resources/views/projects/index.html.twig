@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <p>{{ knp_pagination_sortable(pagination, 'Id', 'projects.id') }}</p>
+    <p{% if pagination.isSorted('projects.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'name', 'projects.name') }}</p>
     <div class="projects">
         {% for project in pagination %}
             <div class="col-md-4">
