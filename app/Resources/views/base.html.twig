@@ -42,7 +42,15 @@
             {% endfor %}
 
             <div class="row">
-                {% block body %}{% endblock %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="col-md-4">
+                        <h3>All projects: </h3>
+                        {{ render(controller("AppBundle:Default:projectsListing")) }}
+                    </div>
+                {% endif %}
+                <div class="col-md-8">
+                    {% block body %}{% endblock %}
+                </div>
             </div>
         </div>
 

@@ -1,0 +1,5 @@
+<ul class="projects-names">
+   {% for project in projects %}
+        <li><a href="{{ path('show_project', {name: project.name}) }}">{{ project.name }}</a></li>
+    {% endfor %}
+</ul>
